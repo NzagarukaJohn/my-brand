@@ -19,13 +19,15 @@
     </div>
     <nav class="navbar">
         <div class="max-width">
-            <div class="logo"><a href="#">Joh<span>n.</span></a></div>
+            <div class="logo"><a href="#">Joh<span>n</span></a></div>
             <ul class="menu">
                 <li><a href="#home" class="menu-btn">Home</a></li>
                 <li><a href="#about" class="menu-btn">About</a></li>
                 <li><a href="#services" class="menu-btn">Projects</a></li>
                 <li><a href="#skills" class="menu-btn">Skills</a></li>
+                <li><a href="./pages/blogMain.html" class="menu-btn">Blog</a></li>
                 <li><a href="#contact" class="menu-btn">Contact</a></li>
+                <li><a href="./pages/login/index.html" class="menu-btn">Login</a></li>
             </ul>
             <div class="menu-btn">
                 <i class="fas fa-bars"></i>
@@ -178,27 +180,34 @@
                     </div>
                 </div>
                 <div class="column right">
-                    <div class="text">Message me</div>
-                    <form action="#">
+                    <div class="text title">Message me</div>
+                    <form class="contact-form" id="form">
                         <div class="fields">
                             <div class="field name">
-                                <input type="text" placeholder="Name" required>
+                                <input type="text"  name="username" id="username" placeholder="Name" >
+                                <div class="error"></div>
                             </div>
                             <div class="field email">
-                                <input type="email" placeholder="Email" required>
+                                <input type="email" name="email" id="email" placeholder="Email">
+                                <div class="error"></div>
                             </div>
                         </div>
                         <div class="field">
-                            <input type="text" placeholder="Subject" required>
+                            <input type="text" placeholder="Subject" id="subject">
+                            <div class="error"></div>
                         </div>
                         <div class="field textarea">
-                            <textarea cols="30" rows="10" placeholder="Message.." required></textarea>
+                            <textarea name="message" id="message" cols="30" rows="10" placeholder="Message.." ></textarea>
+                            <div class="error"></div>
                         </div>
                         <div class="button-area">
-                            <button type="submit">Send message</button>
+                            <button type="submit" id="btn">Send message</button>
                         </div>
                     </form>
+
                 </div>
+            </div>
+        </div>
             </div>
         </div>
     </section>

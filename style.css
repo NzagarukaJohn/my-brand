@@ -423,7 +423,7 @@ section .title::after{
 .contact .right form .fields .field{
     height: 45px;
     width: 100%;
-    margin-bottom: 15px;
+    margin-bottom: 35px;
 }
 .contact .right form .textarea{
     height: 80px;
@@ -488,6 +488,10 @@ footer span a{
 }
 footer span a:hover{
     text-decoration: underline;
+}
+
+.error {
+    color: red;
 }
 
 

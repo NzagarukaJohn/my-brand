@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet" href="../css/main.css" />
+    <title>Dashboard</title>
+  </head>
+  <body>
+    <nav class="nav">
+      <div class="links">
+        <h1 class="title">My Brand</h1>
+        <ul class="nav-links">
+          <li class="nav-link"><a href="" class="active">Dashboard</a></li>
+          <li class="nav-link"><a href="./newPost.html">New Post</a></li>
+          <li class="nav-link"><a href="./queries.html">Queries</a></li>
+          <li class="nav-link profile-wrapper">
+            <a href="#">
+              <img src="/UI/images/my-pic.png" class="avatar" alt="profile" />
+            </a>
+            <div class="dd-menu">
+              <p class="dd-link"><a href="./editProfile.html">Profile</a></p>
+              <p class="dd-link"><a href="" class="logout">Logout</a></p>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="burger">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+      </div>
+    </nav>
+    <!-- loader -->
+    <!-- <div class="loader-container">
+      <div id="preloader">
+        <div id="loader"></div>
+      </div>
+    </div> -->
+    <!-- loader ends here -->
+
+    <section class="overview-wrapper">
+      <div class="over-view">
+        <div class="card-over-view">
+          <p class="overview-item posts">Posts:</p>
+          <p class="right-nbr">19</p>
+        </div>
+        <div class="card-over-view">
+          <p class="overview-item comments">Comments:</p>
+          <p class="right-nbr">19</p>
+        </div>
+        <div class="card-over-view">
+          <p class="overview-item subs">Subscribers:</p>
+          <p class="right-nbr">19</p>
+        </div>
+        <div class="card-over-view">
+          <p class="overview-item likes">Likes:</p>
+          <p class="right-nbr">19</p>
+        </div>
+        <div class="card-over-view">
+          <p class="overview-item queries">Queries:</p>
+          <p class="right-nbr">19</p>
+        </div>
+        <div class="card-over-view">
+          <p class="overview-item views">Views:</p>
+          <p class="right-nbr">19</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="blog-posts-container">
+      <div class="each-post">
+        <div class="post-img">
+          <img src="../images/placeholder.png" alt="blog" />
+        </div>
+        <div class="posts-tags">
+          <p class="tech">
+            <i class="fa fa-tags" aria-hidden="true"></i
+            ><span class="tech">Tech</span>
+          </p>
+          <p class="business">
+            <i class="fa fa-tags" aria-hidden="true"></i
+            ><span class="business">Business</span>
+          </p>
+        </div>
+        <h3 class="post-title">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae
+        </h3>
+        <p class="time"><em> 2 days ago</em></p>
+
+        <div class="bottom-icons">
+          <p class="each-icon">
+            <i class="fa fa-commenting-o" aria-hidden="true"></i
+            ><span class="right">23</span>
+          </p>
+          <p class="each-icon">
+            <i class="fa fa-eye" aria-hidden="true"></i>
+            <span class="right">23</span>
+          </p>
+          <p class="each-icon">
+            <i class="fa fa-heart" aria-hidden="true"></i>
+            <span class="right">23</span>
+          </p>
+        </div>
+        <div class="post-options">
+          <button class="edit">Edit</button>
+          <button class="delete">Delete</button>
+        </div>
+      </div>
+    </section>
+    <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-firestore.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
+    <script src="../js/firebase.js"></script>
+    <script src="../js/app.js"></script>
+
+    <!-- <script>
+      const auth = firebase.auth();
+      const db = firebase.firestore();
+      const logout = document.querySelector(".logout");
+      const postsContainer = document.querySelector(".blog-posts-container");
+
+      auth.onAuthStateChanged((user) => {
+         if (!user) {
+        } else {
+          location.href = "login.html";
+         }
+      });
+      logout.addEventListener("click", (e) => {
+        e.preventDefault();
+        auth.signOut().catch(console.log);
+      });
+
+      function deletePost(id) {
+        const confirmation = confirm("Are you sure deleting this post?");
+        confirmation &&
+          db
+            .collection("Posts")
+            .doc(id)
+            .delete()
+            .then(() => console.log("deleted post successfully"))
+            .catch(console.log);
+      }
+
+      db.collection("Posts").onSnapshot((results) => {
+        let html = "";
+        results.forEach((doc) => {
+          const blog = doc.data();
+          html += `<div class="each-post">
+        <div class="post-img">
+          <img src="${blog.image}" />
+        </div>
+        <div class="posts-tags">
+          <p class="tech">
+            <i class="fa fa-tags" aria-hidden="true"></i
+            ><span class="tech">Tech</span>
+          </p>
+          <p class="business">
+            <i class="fa fa-tags" aria-hidden="true"></i
+            ><span class="business">Business</span>
+          </p>
+        </div>
+        <a href="../blog/readblog.html?id=${doc.id}")><h3 class="post-title">
+        ${blog.title}
+        </h3></a>
+        <p class="time"><em> ${moment(blog.time).fromNow()}</em></p>
+
+        <div class="bottom-icons">
+          <p class="each-icon">
+            <i class="fa fa-commenting-o" aria-hidden="true"></i
+            ><span class="right">${blog.commentsCount}</span>
+          </p>
+          <p class="each-icon">
+            <i class="fa fa-eye" aria-hidden="true"></i>
+            <span class="right">${blog.views}</span>
+          </p>
+          <p class="each-icon">
+            <i class="fa fa-heart" aria-hidden="true"></i>
+            <span class="right">${blog.likes}</span>
+          </p>
+        </div>
+        <div class="post-options">
+         <a href="./editPost.html?id=${
+           doc.id
+         }"> <button class="edit">Edit</button></a>
+          <button class="delete" onclick="deletePost('${
+            doc.id
+          }')">Delete</button>
+        </div>
+      </div>`;
+        });
+        postsContainer.innerHTML = html;
+        disableLoader();
+      });
+    </script> -->
+  </body>
+</html>
