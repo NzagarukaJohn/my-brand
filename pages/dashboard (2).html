@@ -17,8 +17,8 @@
         <div class="logo">
           <a href="#">Joh<span>n</span></a>
         </div>
-            <ul class="menu" id="menu">
-         
+        <ul class="menu">
+          
           <li><a href="" class="menu-btn">Dashboard</a></li>
           <li>
             <a href="./new-article.html" class="menu-btn">New Article</a>
@@ -26,9 +26,9 @@
           <li><a href="./queries.html" class="menu-btn">Queries</a></li>
           <li><a href="/" class="menu-btn">Logout</a></li>
         </ul>
-            <div class="menu-btn" id="burger-menu">
-                <span></span>
-            </div>
+        <div class="menu-btn">
+          <i class="fas fa-bars"></i>
+        </div>
       </div>
     </nav>
     <main>
@@ -79,16 +79,5 @@
         </span>
       </footer>
     </main>
-    <script>
-      
-var burgerMenu = document.getElementById("burger-menu");
-var overlay = document.getElementById("menu");
-burgerMenu.addEventListener("click", function () {
-  this.classList.toggle("close");
-  overlay.classList.toggle("active");
-});
-
-
-    </script>
   </body>
 </html>

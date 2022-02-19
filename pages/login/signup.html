@@ -12,7 +12,7 @@
       integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm"
       crossorigin="anonymous"
     />
-    <title>login</title>
+    <title>SignUp</title>
   </head>
   <body>
     <nav class="navbar sticky">
@@ -37,7 +37,20 @@
       <div class="content">
       <form id="form" >
         <div class="social">
-          <div class="login-title">Get Started</div>
+          <div class="login-title">Create Account</div>
+          <div>
+            <label for="Names">Full Names</label>
+            <i class="fa-solid fa-file-signature"></i>
+            <input
+              type="text"
+              name="Names"
+              id="nameid"
+              placeholder="Enter your names" required
+            />
+            <i class="fas fa-exclamation-circle failure-icon"></i>
+            <i class="far fa-check-circle success-icon"></i>
+            <div class="error"></div>
+          </div>
         <div>
           <label for="email">Email</label>
           <i class="far fa-envelope"></i>
@@ -65,8 +78,8 @@
           <div class="error"></div>
         </div>
 
-        <a> <button type="submit" id="submit">Submit</button> </a> Don't have account?
-        <a href="./signup.html" class="signup-link"> Sign up</a>
+        <a> <button type="submit" id="submit">Sign Up</button> </a>Have an account?
+        <a href="./index.html" class="signup-link">Login</a>
       </form>
     </div>
   </body>
