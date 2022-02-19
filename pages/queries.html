@@ -21,10 +21,10 @@
          
           <li><a href="./dashboard.html" class="menu-btn">Dashboard</a></li>
           <li>
-            <a href="./new-query.html" class="menu-btn">New query</a>
+            <a href="./new-article.html" class="menu-btn">New Article</a>
           </li>
           <li><a href="./queries.html" class="menu-btn">Queries</a></li>
-          <li><a href="/" class="menu-btn">Logout</a></li>
+          <li><a href="logout.html" class="menu-btn">Logout</a></li>
         </ul>
             <div class="menu-btn" id="burger-menu">
                 <span></span>
@@ -64,7 +64,14 @@
           viewQueries()
       })
       function viewQueries(){
-          let queries = JSON.parse(localStorage.getItem('queries'));
+        let bearer = `Bearer ${localStorage.getItem("token")}`;
+        fetch("https://john-my-brand.herokuapp.com/query",{
+          headers:{
+            'Authorization': bearer
+          }
+        })
+         .then(res=>res.json())
+         .then(queries =>{
           if(queries && queries.length > 0){
               queries.forEach((query,idx)=>{
                   let queryEl = `
@@ -90,6 +97,7 @@
           document.querySelector('tbody').appendChild(tr);
           });
       }
+    })
       }
   </script>
   
@@ -101,7 +109,15 @@
       this.classList.toggle("close");
       overlay.classList.toggle("active");
     });
-    
+
+    const checkLog = () =>{
+        let token = localStorage.getItem("token");
+        if(token == null){
+            window.location.replace("login/index.html");
+        }
+      }
+
+checkLog();
     
         </script>
   </body>

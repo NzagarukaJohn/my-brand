@@ -19,7 +19,6 @@ document.addEventListener("DOMContentLoaded",function(){
 
 document.querySelector('form').addEventListener("submit",function(e){
 
-    localStorage.setItem("kevin",'skdlfjsd')
     e.preventDefault();
     switch (e.target.id){
         case 'new-article-form':
@@ -33,46 +32,35 @@ document.querySelector('form').addEventListener("submit",function(e){
 
 function addNewArticle(){
    let title = document.querySelector("#title"),
-    body = document.querySelector("#body"),
-    tag = document.querySelector("#tag");
-   
-     let articles = JSON.parse(localStorage.getItem('articles'));
-     
-      if (articles) {
-        articles = articles.length > 0?articles : [];
-      }else{
-          articles =[]
-      }
+    body = document.querySelector("#body");
+        
      let blogArticle = {
-        body:body.value,
-        tag: tag.value,
-        title:title.value,
+        content:body.value,
+        heading:title.value,
         image: img
     }
     let bearer = `Bearer ${localStorage.getItem("token")}`;
 
-    fetch('https://https://john-my-brand.herokuapp.com/article', {
+    fetch('https://john-my-brand.herokuapp.com/article', {
         method: 'POST',
         headers: {
             'Accept': 'application/json, text/plain, */*',
             'Content-Type': 'application/json',
             'Authorization': bearer
         },
-        body: JSON.stringify(newArticle)
+        body: JSON.stringify(blogArticle)
        }).then(res => {
         if (res.ok)    {
             alert("New article has been added successfully");
-            window.location = 'index.html'
-    }
+            window.location = 'blogmainadmin.html'
+           }
        }).catch((err) => {
     alert("Problem connecting to the server")
   })
 }
-export {
-   addArticle
-};
+
+
 function getEdit(){
-    console.log('yeah i am here')
     let title = document.querySelector("#title"),
     body = document.querySelector("#title"),
     tag = document.querySelector("#title");

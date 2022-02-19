@@ -24,7 +24,7 @@
             <a href="./new-article.html" class="menu-btn">New Article</a>
           </li>
           <li><a href="./queries.html" class="menu-btn">Queries</a></li>
-          <li><a href="/" class="menu-btn">Logout</a></li>
+          <li><a href="logout.html" class="menu-btn">Logout</a></li>
         </ul>
             <div class="menu-btn" id="burger-menu">
                 <span></span>
@@ -47,12 +47,6 @@
             </div>
           </div>
           <div class="card">
-            <h3 class="card-title">Subscribers</h3>
-            <div class="card-body">
-              <h1>19</h1>
-            </div>
-          </div>
-          <div class="card">
             <h3 class="card-title">Likes</h3>
             <div class="card-body">
               <h1>19</h1>
@@ -60,12 +54,6 @@
           </div>
           <div class="card">
             <h3 class="card-title">Queries</h3>
-            <div class="card-body">
-              <h1>19</h1>
-            </div>
-          </div>
-          <div class="card">
-            <h3 class="card-title">Views</h3>
             <div class="card-body">
               <h1>19</h1>
             </div>
@@ -83,12 +71,21 @@
       
 var burgerMenu = document.getElementById("burger-menu");
 var overlay = document.getElementById("menu");
+
 burgerMenu.addEventListener("click", function () {
   this.classList.toggle("close");
   overlay.classList.toggle("active");
 });
 
+const checkLog = () =>{
+  let token = localStorage.getItem("token");
+  console.log(token == null)
+   if(token == null){
+       window.location.replace("login/index.html");
+   }
+}
 
+checkLog();
     </script>
   </body>
 </html>

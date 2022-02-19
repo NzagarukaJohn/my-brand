@@ -50,14 +50,6 @@
                         <textarea id="body" cols="30" rows="4" required minlength="10"></textarea>
                     </div>
                     <div>
-                        <span>Tags</span>
-                        <select id="tag" required>
-                            <option value="">Select tag</option>
-                            <option value="Tech">Tech</option>
-                            <option value="Business">Business</option>
-                        </select>
-                    </div>
-                    <div>
                         <button type="submit">Submit</button>
                     </div>
                 </form>
@@ -71,17 +63,24 @@
         </span>
       </footer>
     </main>
-    <script type="module" src="./JavaScript/article.js"></script>
+    <script type="module" src="./javascript/article.js"></script>
   </body>
   <script>
     
-var burgerMenu = document.getElementById("burger-menu");
-var overlay = document.getElementById("menu");
-burgerMenu.addEventListener("click", function () {
-this.classList.toggle("close");
-overlay.classList.toggle("active");
-});
+    var burgerMenu = document.getElementById("burger-menu");
+    var overlay = document.getElementById("menu");
+    burgerMenu.addEventListener("click", function () {
+    this.classList.toggle("close");
+    overlay.classList.toggle("active");
+    });
 
+    const checkLog = () =>{
+  let token = localStorage.getItem("token");
+   if(token == null){
+       window.location.replace("login/index.html");
+   }
+}
 
+checkLog();
   </script>
 </html>
