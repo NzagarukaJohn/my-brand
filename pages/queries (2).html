@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <link rel="stylesheet" href="../css/main.css" />
+    <link rel="stylesheet" href="../style.css" />
+    <title>Super Blog</title>
+  </head>
+  <body>
+    <nav class="navbar sticky">
+      <div class="max-width">
+        <div class="logo">
+          <a href="#">Joh<span>n</span></a>
+        </div>
+        <ul class="menu">
+          <li><a href="../index.html#home" class="menu-btn">Home</a></li>
+          <li><a href="./dashboard.html" class="menu-btn">Dashboard</a></li>
+          <li>
+            <a href="./new-article.html" class="menu-btn">New Article</a>
+          </li>
+          <li><a href="./queries.html" class="menu-btn">Queries</a></li>
+          <li><a href="/" class="menu-btn">Logout</a></li>
+        </ul>
+        <div class="menu-btn">
+          <i class="fas fa-bars"></i>
+        </div>
+      </div>
+    </nav>
+    <main>
+      <section class="container">
+          <div class="card article-card-queries">
+            <h3 class="card-title">Queries</h3>
+            <div class="card-body">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Image</th>
+                            <th>Title</th>
+                            <th>Body</th>
+                            <th>Tag</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <img src="/images/221000854.jpg">
+                            </td>
+                            <td>
+                                Lorem ipsum dolor sit amet
+                            </td>
+                            <td>
+                                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fugit, corrupti suscipit autem cumque soluta accusamus aliquam nemo, vero, blanditiis asperiores labore! Facilis itaque voluptatem expedita impedit velit, facere necessitatibus ab?
+                            </td>
+                            <td>
+                                Tech
+                            </td>
+                            <td>
+                                <div class="flex">
+                                    <a href="./edit-article.html">
+                                    <button>Edit</button>
+                                </a>
+                                <a href="#">
+                                    <button class="delete-button">Delete</button>
+                                </a>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <img src="/images/221000854.jpg">
+                            </td>
+                            <td>
+                                Lorem ipsum dolor sit amet
+                            </td>
+                            <td>
+                                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fugit, corrupti suscipit autem cumque soluta accusamus aliquam nemo, vero, blanditiis asperiores labore! Facilis itaque voluptatem expedita impedit velit, facere necessitatibus ab?
+                            </td>
+                            <td>
+                                Tech
+                            </td>
+                            <td>
+                                <div class="flex">
+                                    <a href="./edit-article.html">
+                                    <button>Edit</button>
+                                </a>
+                                <a href="#">
+                                    <button class="delete-button">Delete</button>
+                                </a>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+      </section>
+      <footer>
+        <span
+          >Created By <a href="#">John</a> |
+          <span class="far fa-copyright"></span> 2021
+        </span>
+      </footer>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <link rel="stylesheet" href="../css/main.css" />
+    <link rel="stylesheet" href="../style.css" />
+    <title>Super Blog</title>
+  </head>
+  
+  <body>
+    <nav class="navbar sticky">
+      <div class="max-width">
+        <div class="logo">
+          <a href="#">Joh<span>n</span></a>
+        </div>
+            <ul class="menu" id="menu">
+          <li><a href="../index.html#home" class="menu-btn">Home</a></li>
+          <li><a href="../index.html#about" class="menu-btn">About</a></li>
+          <li>
+            <a href="../index.html#services" class="menu-btn">Projects</a>
+          </li>
+          <li><a href="../index.html#skills" class="menu-btn">Skills</a></li>
+          <li><a href="./blogMain.html" class="menu-btn">Blog</a></li>
+          <li><a href="#contact" class="menu-btn">Contact</a></li>
+          <li><a href="./login/index.html" class="menu-btn">Login</a></li>
+        </ul>
+            <div class="menu-btn" id="burger-menu">
+                <span></span>
+            </div>
+      </div>
+    </nav>
+
+    <main>
+      <section class="container">
+        <div class="card-container">
+
+
+        </div>
+      </section>
+      <footer>
+        <span
+          >Created By <a href="#">John</a> |
+          <span class="far fa-copyright"></span> 2022
+        </span>
+      </footer>
+    </main>
+    <script >
+        document.addEventListener("DOMContentLoaded",function(){
+            viewArticles()
+        })
+        function viewArticles(){
+            let articles = JSON.parse(localStorage.getItem('articles'));
+            if(articles && articles.length > 0){
+                articles.forEach((article,idx)=>{
+                    let articleEl = `
+    <div class="card">
+      <div class="card-image-wrap">
+        <img
+          class="card-image"
+          src="${article.image}"
+          alt="post image"
+        />
+      </div>
+      <h3 class="card-title">
+        ${article.title}
+      </h3>
+      <div class="card-body">
+        <div class="tags">
+          <p class="tag">
+            <i class="fa fa-tags" aria-hidden="true"></i
+            ><span class="tech">${article.tag}</span>
+          </p>
+        </div>
+      </div>
+      <div class="card-footer">
+        <div class="time">
+          <a href="edit-article.html?${idx}">  <i class="fa fa-edit" aria-hidden="true"></i>
+<span>2 days ago</span> </a>
+        </div>
+        <div class="reaction">
+          <i class="fa fa-comment" aria-hidden="true"></i><span>23</span>
+        </div>
+        <div class="reaction">
+       
+            <a href="delete-article.html?${idx}">  <i class="fa fa-trash" aria-hidden="true"></i> 
+            
+          <span>Delete</span></a>
+        </div>
+      </div>
+    </div>
+                    `;
+           let a = document.createElement('a');
+           a.href ="/pages/single-blog.html";
+          var doc = new DOMParser().parseFromString(articleEl, 'text/html');
+           a.innerHTML = articleEl;
+            document.querySelector('.card-container').appendChild(a);
+            });
+        }
+        }
+    </script>
+    
+    <script>
+      
+      var burgerMenu = document.getElementById("burger-menu");
+      var overlay = document.getElementById("menu");
+      burgerMenu.addEventListener("click", function () {
+        this.classList.toggle("close");
+        overlay.classList.toggle("active");
+      });
+      
+      
+          </script>
+  </body>
+</html>
