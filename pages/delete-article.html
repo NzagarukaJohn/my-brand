@@ -7,6 +7,30 @@
     <title>Document</title>
 </head>
 <body>
-    <script type="module" src="./JavaScript/article.js"></script>
+   <script>
+       document.addEventListener("load",deleteArticle())
+
+        function deleteArticle() {
+            let res = confirm("Do you really want to delete this article?"),
+                currentId = document.location.search.toString().slice(1),
+                bearer = `Bearer ${localStorage.getItem("token")}`;
+            if (res) {
+                fetch(`https://john-my-brand.herokuapp.com/article/${currentId}`, {
+                    method: 'DELETE',
+                    headers: {
+                    'Authorization': bearer
+                    }
+                    }).then(res => {
+                        if (res.ok) {
+                            alert(" article Deleted successfully");
+                            window.location.replace('blogMainAdmin.html');
+                        }
+                }).catch((err)=>{
+                    console.log(err)
+                alert("Problem deleting article")
+                })
+            }
+        }
+   </script>
 </body>
 </html>

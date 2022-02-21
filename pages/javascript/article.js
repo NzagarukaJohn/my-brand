@@ -1,10 +1,5 @@
 let img ;
 document.addEventListener("DOMContentLoaded",function(){
-    if (document.location.pathname.includes('edit')) {
-        getEdit();
-    }else if(document.location.pathname.includes('delete')){
-         deleteArticle();
-    }
 
    document.querySelector("#image").addEventListener("change",function(e){
     
@@ -62,42 +57,22 @@ function addNewArticle(){
 
 function getEdit(){
     let title = document.querySelector("#title"),
-    body = document.querySelector("#title"),
-    tag = document.querySelector("#title");
-    let currentId = document.location.search.toString().slice(1);
-     let articles = JSON.parse(localStorage.getItem('articles'));
-     articles.forEach((article,idx) => {
-           if (idx == currentId) {
-               title.value = article.title;
-               body.value = article.body;
-               tag.value = article.tag;
-           }
-     });
+        body = document.querySelector("#title"),
+        currentId = document.location.search.toString().slice(1);
+    let bearer = `Bearer ${localStorage.getItem("token")}`;
 
-   
+        fetch(`https://john-my-brand.herokuapp.com/article/${currentId}`).then(res => {
+            console.log(res)
+        articles.forEach((article,idx) => {
+               title.value = article.heading;
+               body.value = article.body;
+        })
+       })
     //window.location = 'dashboard.html'
 
 }
 
-function deleteArticle(){
-    
-    let currentId = document.location.search.toString().slice(1);
-     let articles = JSON.parse(localStorage.getItem('articles'));
-     console.log(currentId)
-     fetch("https://john-my-brand.herokuapp.com/article",{
-        method: 'POST',
-        headers:{
-          "Accept":"application/json, text/plain, */*",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(newQuery)
-      })
-      .then(res=>{
-      })
- 
-    alert("The article has been Deleted successfully");
-    window.location = 'blogMainAdmin.html'
-}
+
 
 function editArticle(){
 

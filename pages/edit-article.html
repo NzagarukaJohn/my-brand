@@ -41,7 +41,7 @@
                         <span>Title</span>
                         <input type="text" id="title" value="Lorem ipsum dolor sit amet" placeholder="Enter article title" required min="5" minlength="25">
                     </div>
-                    <div>
+                    <div style="display: none;"> 
                         <span>image</span>
                         <input type="file" id="image" required>
                     </div>
@@ -50,14 +50,6 @@
                         <textarea id="body" cols="30" rows="4" required minlength="500">
                             Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fugit, corrupti suscipit autem cumque soluta accusamus aliquam nemo, vero, blanditiis asperiores labore! Facilis itaque voluptatem expedita impedit velit, facere necessitatibus ab?
                         </textarea>
-                    </div>
-                    <div>
-                        <span>Tags</span>
-                        <select id="tag" required>
-                            <option value="">Select tag</option>
-                            <option value="Tech" selected>Tech</option>
-                            <option value="Business">Business</option>
-                        </select>
                     </div>
                     <div>
                         <button type="submit">Submit</button>
@@ -73,7 +65,6 @@
         </span>
       </footer>
     </main>
-    <script  type="module"  src="./JavaScript/article.js"></script>
     
     <script>
       
@@ -84,7 +75,20 @@
         overlay.classList.toggle("active");
       });
       
-      
+    document.addEventListener("load",getEdit())
+
+      function getEdit(){
+    let title = document.querySelector("#title"),
+        body = document.querySelector("#body"),
+        currentId = document.location.search.toString().slice(1);
+    let bearer = `Bearer ${localStorage.getItem("token")}`;
+        fetch(`https://john-my-brand.herokuapp.com/article/${currentId}`).then(res => {
+            console.log(res)
+               title.value = article.heading;
+               body.value = article.content;
+       })
+    //window.location = 'dashboard.html'
+   }
           </script>
   </body>
 </html>

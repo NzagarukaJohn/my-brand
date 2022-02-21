@@ -53,54 +53,51 @@
         document.addEventListener("DOMContentLoaded",function(){
             viewArticles()
         })
+
         function viewArticles(){
-            let articles = JSON.parse(localStorage.getItem('articles'));
+        fetch("https://john-my-brand.herokuapp.com/article",)
+         .then(res=>res.json())
+         .then(articles =>{
             if(articles && articles.length > 0){
                 articles.forEach((article,idx)=>{
                     let articleEl = `
-    <div class="card">
-      <div class="card-image-wrap">
-        <img
-          class="card-image"
-          src="${article.image}"
-          alt="post image"
-        />
-      </div>
-      <h3 class="card-title">
-        ${article.title}
-      </h3>
-      <div class="card-body">
-        <div class="tags">
-          <p class="tag">
-            <i class="fa fa-tags" aria-hidden="true"></i
-            ><span class="tech">${article.tag}</span>
-          </p>
-        </div>
-      </div>
-      <div class="card-footer">
-        <div class="time">
-          <a href="edit-article.html?${idx}">  <i class="fa fa-edit" aria-hidden="true"></i>
-<span>2 days ago</span> </a>
-        </div>
-        <div class="reaction">
-          <i class="fa fa-comment" aria-hidden="true"></i><span>23</span>
-        </div>
-        <div class="reaction">
-       
-            <a href="delete-article.html?${idx}">  <i class="fa fa-trash" aria-hidden="true"></i> 
-            
-          <span>Delete</span></a>
-        </div>
-      </div>
-    </div>
-                    `;
-           let a = document.createElement('a');
-           a.href ="/pages/single-blog.html";
-          var doc = new DOMParser().parseFromString(articleEl, 'text/html');
-           a.innerHTML = articleEl;
-            document.querySelector('.card-container').appendChild(a);
-            });
-        }
+                <div class="card">
+                  <div class="card-image-wrap">
+                    <img
+                      class="card-image"
+                      src="${article.image}"
+                      alt="post image"
+                    />
+                  </div>
+                  <h3 class="card-title">
+                    ${article.heading}
+                  </h3>
+                  <div class="card-body">
+                  </div>
+                  <div class="card-footer">
+                    <div class="time">
+                      <a href="edit-article.html?${article._id}">  <i class="fa fa-edit" aria-hidden="true"></i>
+                    </div>
+                    <div class="reaction">
+                      <i class="fa fa-comment" aria-hidden="true"></i><span>23</span>
+                    </div>
+                    <div class="reaction">
+                  
+                        <a href="delete-article.html?${article._id}">  <i class="fa fa-trash" aria-hidden="true"></i> 
+                        
+                      <span>Delete</span></a>
+                    </div>
+                  </div>
+                </div>
+                                `;
+              let a = document.createElement('a');
+              a.href ="/pages/single-blog.html";
+              var doc = new DOMParser().parseFromString(articleEl, 'text/html');
+              a.innerHTML = articleEl;
+                document.querySelector('.card-container').appendChild(a);
+                });
+           }
+         })
         }
     </script>
     
